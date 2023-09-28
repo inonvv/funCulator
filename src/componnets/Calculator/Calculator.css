@@ -1,0 +1,21 @@
+.Calculator {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 25px;
+  width: 80%;
+  height: 10rem;
+  background-color: darkcyan;
+  border-radius: 5px;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  gap: 25px;
+}

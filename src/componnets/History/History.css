@@ -1,0 +1,13 @@
+.history {
+  display: flex;
+  font-size: 0.4rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  width: 30%;
+  height: 80%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-radius: 5px;
+}
