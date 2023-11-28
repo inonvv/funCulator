@@ -3,6 +3,7 @@ import "./DisplayScore.css";
 
 export const DisplayScore = ({ number1, number2, result, opertor }) => {
   const [prompt, setPrompt] = useState("");
+  const [active, setActive] = useState(false);
 
   useEffect(() => {
     setPrompt(number1);
@@ -26,5 +27,9 @@ export const DisplayScore = ({ number1, number2, result, opertor }) => {
     }
   }, [result]);
 
-  return <div className="DisplayScore">{prompt}</div>;
+  useEffect(() => {
+    setActive(!!prompt);
+  }, [prompt]);
+
+  return <div className={` ${active ? "DisplayScore" : ""}`}>{prompt}</div>;
 };

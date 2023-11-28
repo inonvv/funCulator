@@ -25,7 +25,7 @@ export const Number = ({
   };
 
   return (
-    <div className="Countainer">
+    <div className="container">
       <div className="row">
         <Button onClick={() => handleNumberClick(1)}>1</Button>
         <Button onClick={() => handleNumberClick(2)}>2</Button>

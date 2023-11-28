@@ -1,5 +1,9 @@
 .DisplayScore {
   width: auto;
-  border: 2px double thistle;
-  padding: 5px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 5px;
+  border: 7px groove thistle;
+  border-radius: 20px;
+  padding: 15px;
 }

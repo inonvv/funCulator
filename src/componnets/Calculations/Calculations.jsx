@@ -15,7 +15,7 @@ export const Calculations = ({
   clearHistory,
 }) => {
   return (
-    <div>
+    <div className="Calculations">
       <Arithmatic
         clear={clear}
         setOpertor={setOpertor}
