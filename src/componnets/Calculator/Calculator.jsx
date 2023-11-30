@@ -3,6 +3,8 @@ import { DisplayScore } from "../DisplayScore/DisplayScore";
 import { Calculations } from "../Calculations/Calculations";
 import { History } from "../History/History";
 import { useEffect, useState } from "react";
+import { useSpring, animated } from "@react-spring/web";
+
 export const Calculator = () => {
   const [number1, setNumber1] = useState(undefined);
   const [number2, setNumber2] = useState(undefined);
@@ -10,6 +12,10 @@ export const Calculator = () => {
   const [opertor, setOperator] = useState(undefined);
   const [equals, setEquals] = useState(false);
   const [resultsHistory, setResultsHistory] = useState([]);
+
+  const { color } = useSpring({
+    color: equals ? "green" : "red", // Change colors based on condition (for example, equals being true or false)
+  });
 
   const calculateResult = (number1, number2, opertor) => {
     switch (opertor) {
@@ -27,6 +33,14 @@ export const Calculator = () => {
     }
   };
 
+  const checkOpFirst = () => {
+    if (opertor && number1 === undefined && number2 === undefined) {
+      setOperator(undefined);
+      alert("Error! Please input valid numbers before selecting an operator.");
+    }
+  };
+  checkOpFirst();
+
   const clear = () => {
     setNumber1(undefined);
     setNumber2(undefined);
@@ -37,6 +51,7 @@ export const Calculator = () => {
   const clearHistory = () => {
     setResultsHistory([]);
   };
+
   useEffect(() => {
     if (
       equals == true &&
@@ -52,22 +67,28 @@ export const Calculator = () => {
         ...resultsHistory,
         `${number1} ${opertor} ${number2} = ${res.toFixed(2)}`,
       ]);
+
       setEquals(false);
     } else if (equals == true) {
-      alert("Error try again!");
+      alert("equals error");
       setEquals(false);
     }
   }, [equals]);
 
+  //JX~4VAzg7sB_A~k
   return (
     <div className="Calculator">
       <div className="left">
-        <DisplayScore
-          number1={number1}
-          number2={number2}
-          result={result}
-          opertor={opertor}
-        />
+        {/* Apply animation to this component */}
+        <animated.div style={{ color }}>
+          <DisplayScore
+            number1={number1}
+            number2={number2}
+            result={result}
+            opertor={opertor}
+          />
+        </animated.div>
+
         <Calculations
           setNumber1={setNumber1}
           setNumber2={setNumber2}
