@@ -1,6 +1,21 @@
+@keyframes pop {
+  0% {
+    transform: scale(1); /* Normal size */
+  }
+  50% {
+    transform: scale(1.2); /* Slightly bigger */
+  }
+  100% {
+    transform: scale(1); /* Return to normal size */
+  }
+}
+
 .Calculations {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  /* animation-name: pop;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards; */
 }

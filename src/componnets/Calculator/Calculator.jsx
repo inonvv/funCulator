@@ -13,10 +13,6 @@ export const Calculator = () => {
   const [equals, setEquals] = useState(false);
   const [resultsHistory, setResultsHistory] = useState([]);
 
-  const { color } = useSpring({
-    color: equals ? "green" : "red", // Change colors based on condition (for example, equals being true or false)
-  });
-
   const calculateResult = (number1, number2, opertor) => {
     switch (opertor) {
       case "+":
@@ -79,15 +75,12 @@ export const Calculator = () => {
   return (
     <div className="Calculator">
       <div className="left">
-        {/* Apply animation to this component */}
-        <animated.div style={{ color }}>
-          <DisplayScore
-            number1={number1}
-            number2={number2}
-            result={result}
-            opertor={opertor}
-          />
-        </animated.div>
+        <DisplayScore
+          number1={number1}
+          number2={number2}
+          result={result}
+          opertor={opertor}
+        />
 
         <Calculations
           setNumber1={setNumber1}
