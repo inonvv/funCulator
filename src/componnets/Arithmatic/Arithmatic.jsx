@@ -11,6 +11,7 @@ export const Arithmatic = ({ setOpertor, setEquals, clear, clearHistory }) => {
     division: false,
     equlas: false,
     clear: false,
+    clearHistory: false,
   });
 
   const operatorBtnName = (button) => {
@@ -46,6 +47,9 @@ export const Arithmatic = ({ setOpertor, setEquals, clear, clearHistory }) => {
     clear: useSpring({
       transform: animationStates.clear ? "scale(1.10)" : "scale(1)",
     }),
+    clearHistory: useSpring({
+      transform: animationStates.clearHistory ? "scale(1.10)" : "scale(1)",
+    }),
   };
 
   return (
@@ -61,9 +65,8 @@ export const Arithmatic = ({ setOpertor, setEquals, clear, clearHistory }) => {
             +
           </Button>
         </animated.div>
-        <animated.div>
+        <animated.div style={operatorSprings.minus}>
           <Button
-            style={operatorSprings.minus}
             onClick={() => {
               setOpertor("-");
               operatorBtnName("minus");
@@ -104,9 +107,8 @@ export const Arithmatic = ({ setOpertor, setEquals, clear, clearHistory }) => {
             =
           </Button>
         </animated.div>
-        <animated.div>
+        <animated.div style={operatorSprings.clear}>
           <Button
-            style={operatorSprings.clear}
             onClick={() => {
               clear();
               operatorBtnName("clear");
@@ -116,16 +118,15 @@ export const Arithmatic = ({ setOpertor, setEquals, clear, clearHistory }) => {
           </Button>
         </animated.div>
 
-        <animated.div style={operatorSprings.clear}>
-          {/* <Button onClick={clearHistory} */}
+        <animated.div style={operatorSprings.clearHistory}>
           <Button
             onClick={() => {
               clearHistory();
-              operatorBtnName("clear");
+              operatorBtnName("clearHistory");
             }}
             className="clean-history"
           >
-            clean history
+            Clean History
           </Button>
         </animated.div>
       </div>

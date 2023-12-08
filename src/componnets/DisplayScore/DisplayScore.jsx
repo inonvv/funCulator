@@ -4,6 +4,7 @@ import "./DisplayScore.css";
 export const DisplayScore = ({ number1, number2, result, opertor }) => {
   const [prompt, setPrompt] = useState("");
   const [active, setActive] = useState(false);
+  const [opacity, setOpacity] = useState(false);
 
   useEffect(() => {
     setPrompt(number1);
@@ -31,5 +32,19 @@ export const DisplayScore = ({ number1, number2, result, opertor }) => {
     setActive(!!prompt);
   }, [prompt]);
 
-  return <div className={` ${active ? "DisplayScore" : ""}`}>{prompt}</div>;
+  useEffect(() => {
+    setOpacity(!!prompt);
+  }, [prompt]);
+
+  // איכשהו לעשות תנאי אם אופסיטי
+  return (
+    <div className={`${active ? " visible" : "  notVisible"}`}>
+      <div
+        className={`DisplayScore`}
+        // style={{ opacity: opacity ? 0 : 1 }}
+      >
+        {prompt}
+      </div>
+    </div>
+  );
 };
